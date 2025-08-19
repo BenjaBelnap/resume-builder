@@ -32,7 +32,9 @@ class TwoColumnDocTemplate(BaseDocTemplate):
         # Define page margins
         margin = 0.5 * inch
         header_height = 1.8 * inch  # Space for header
-        col_width = (letter[0] - 3 * margin) / 2
+        total_width = letter[0] - 3 * margin  # Total available width for columns
+        left_col_width = (total_width * 2) / 3   # 2/3 of total width
+        right_col_width = total_width / 3        # 1/3 of total width
         
         # Header frame (full width for name, title, contact info)
         header_frame = Frame(
@@ -41,16 +43,16 @@ class TwoColumnDocTemplate(BaseDocTemplate):
             id='header'
         )
         
-        # Left column frame 
+        # Left column frame (2/3 width)
         left_frame = Frame(
-            margin, margin, col_width, letter[1] - 2 * margin - header_height - 0.1 * inch,
+            margin, margin, left_col_width, letter[1] - 2 * margin - header_height - 0.1 * inch,
             leftPadding=0, rightPadding=10, topPadding=0, bottomPadding=0,
             id='left'
         )
         
-        # Right column frame 
+        # Right column frame (1/3 width)
         right_frame = Frame(
-            margin + col_width + margin, margin, col_width, letter[1] - 2 * margin - header_height - 0.1 * inch,
+            margin + left_col_width + margin, margin, right_col_width, letter[1] - 2 * margin - header_height - 0.1 * inch,
             leftPadding=10, rightPadding=0, topPadding=0, bottomPadding=0,
             id='right'
         )
