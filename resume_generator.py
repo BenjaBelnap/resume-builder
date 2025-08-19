@@ -228,7 +228,7 @@ class ResumeGenerator:
         story = []
         
         # Check if image path is provided in the data
-        image_path = data.get('image')
+        image_path = data.get('image')[0]
         if image_path and os.path.exists(image_path):
             try:
                 # Create image with appropriate sizing
