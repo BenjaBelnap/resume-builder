@@ -9,7 +9,9 @@ import yaml
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.colors import HexColor, black, white
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, FrameBreak
+from reportlab.graphics.shapes import Drawing, Line
+from reportlab.graphics import renderPDF
 from reportlab.platypus.tableofcontents import TableOfContents
 from reportlab.lib.units import inch, mm
 from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_RIGHT, TA_JUSTIFY
@@ -21,7 +23,7 @@ import os
 
 
 class TwoColumnDocTemplate(BaseDocTemplate):
-    """Custom document template for two-column layout"""
+    """Custom document template with header and two-column layout"""
     
     def __init__(self, filename, **kwargs):
         self.allowSplitting = 0
@@ -29,24 +31,32 @@ class TwoColumnDocTemplate(BaseDocTemplate):
         
         # Define page margins
         margin = 0.5 * inch
+        header_height = 1.8 * inch  # Space for header
         col_width = (letter[0] - 3 * margin) / 2
         
-        # Left column frame (contact info, skills, education)
+        # Header frame (full width for name, title, contact info)
+        header_frame = Frame(
+            margin, letter[1] - margin - header_height, letter[0] - 2 * margin, header_height,
+            leftPadding=0, rightPadding=0, topPadding=0, bottomPadding=10,
+            id='header'
+        )
+        
+        # Left column frame 
         left_frame = Frame(
-            margin, margin, col_width, letter[1] - 2 * margin,
+            margin, margin, col_width, letter[1] - 2 * margin - header_height - 0.1 * inch,
             leftPadding=0, rightPadding=10, topPadding=0, bottomPadding=0,
             id='left'
         )
         
-        # Right column frame (experience, projects)
+        # Right column frame 
         right_frame = Frame(
-            margin + col_width + margin, margin, col_width, letter[1] - 2 * margin,
+            margin + col_width + margin, margin, col_width, letter[1] - 2 * margin - header_height - 0.1 * inch,
             leftPadding=10, rightPadding=0, topPadding=0, bottomPadding=0,
             id='right'
         )
         
         # Create page template
-        template = PageTemplate(id='twocol', frames=[left_frame, right_frame])
+        template = PageTemplate(id='headertwocol', frames=[header_frame, left_frame, right_frame])
         self.addPageTemplates([template])
 
 
@@ -153,8 +163,20 @@ class ResumeGenerator:
         with open(self.yaml_file, 'r', encoding='utf-8') as file:
             return yaml.safe_load(file)
     
-    def _create_contact_section(self, data):
-        """Create contact information section"""
+    def _create_horizontal_line(self, width=None):
+        """Create a horizontal line separator"""
+        if width is None:
+            width = letter[0] - 2 * 0.5 * inch  # Full width minus margins
+        
+        drawing = Drawing(width, 12)
+        line = Line(0, 6, width, 6)
+        line.strokeColor = HexColor('#2980B9')
+        line.strokeWidth = 1
+        drawing.add(line)
+        return drawing
+    
+    def _create_header_section(self, data):
+        """Create header with name, title, and contact information"""
         story = []
         
         # Name
@@ -163,16 +185,28 @@ class ResumeGenerator:
         # Title
         story.append(Paragraph(data['title'], self.styles['JobSubtitle']))
         
-        # Contact info
+        # Contact info - email and phone on same line
         contact = data.get('contact', {})
+        contact_line1 = []
         if contact.get('email'):
-            story.append(Paragraph(f'<a href="mailto:{contact["email"]}" color="#27AE60">{contact["email"]}</a>', self.styles['Contact']))
+            contact_line1.append(f'<a href="mailto:{contact["email"]}" color="#27AE60">{contact["email"]}</a>')
         if contact.get('phone'):
-            story.append(Paragraph(contact['phone'], self.styles['Contact']))
+            contact_line1.append(contact['phone'])
+        
+        if contact_line1:
+            story.append(Paragraph(' • '.join(contact_line1), self.styles['Contact']))
+        
+        # LinkedIn on next line
         if contact.get('linkedin'):
-            story.append(Paragraph(f'<a href="{contact["linkedin"]}" color="#27AE60">LinkedIn Profile</a>', self.styles['Contact']))
+            linkedin_text = contact['linkedin'].replace('https://www.linkedin.com/in/', 'linkedin.com/in/')
+            story.append(Paragraph(f'<a href="{contact["linkedin"]}" color="#27AE60">{linkedin_text}</a>', self.styles['Contact']))
+        
+        # Location on next line
         if contact.get('location'):
             story.append(Paragraph(contact['location'], self.styles['Contact']))
+        
+        # Add horizontal line separator
+        story.append(self._create_horizontal_line())
         
         return story
     
@@ -286,7 +320,7 @@ class ResumeGenerator:
         return story
     
     def generate_pdf(self):
-        """Generate the PDF resume"""
+        """Generate the PDF resume with header"""
         data = self._load_yaml_data()
         
         # Create document
@@ -295,21 +329,22 @@ class ResumeGenerator:
         # Build story elements
         story = []
         
+        # Header section (full width)
+        story.extend(self._create_header_section(data))
+        
+        # Frame break to move to left column
+        story.append(FrameBreak())
+        
         # Left column content
-        story.extend(self._create_contact_section(data))
-        story.append(Spacer(1, 20))
         story.extend(self._create_about_section(data))
-        story.append(Spacer(1, 20))
-        story.extend(self._create_skills_section(data))
-        story.append(Spacer(1, 20))
+        story.extend(self._create_experience_section(data))
         story.extend(self._create_education_section(data))
         
         # Frame break to move to right column
-        from reportlab.platypus import FrameBreak
         story.append(FrameBreak())
         
         # Right column content
-        story.extend(self._create_experience_section(data))
+        story.extend(self._create_skills_section(data))
         story.extend(self._create_projects_section(data))
         
         # Build PDF
