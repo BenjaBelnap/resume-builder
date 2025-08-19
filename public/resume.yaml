@@ -58,17 +58,14 @@ skills:
     - tSQL
     - CompTIA Project+
     - ITIL 4 Foundations
-  fun:
-    - Flipping hamburgers
-
-tools:
-  - Visual Studio
-  - Copilot
-  - GitHub
-  - Docker
-  - SSMS
-  - Microsoft Excel
-  - Jira
+  tools:
+    - Visual Studio
+    - Copilot
+    - GitHub
+    - Docker
+    - SSMS
+    - Microsoft Excel
+    - Jira
 
 projects:
   - Fire Emblem Game

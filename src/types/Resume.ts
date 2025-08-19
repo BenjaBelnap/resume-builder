@@ -24,7 +24,7 @@ export interface Skills {
   languages: string[];
   concepts: string[];
   certifications: string[];
-  fun: string[];
+  tools: string[];
 }
 
 export interface Resume {
@@ -35,10 +35,9 @@ export interface Resume {
   experience: Experience[];
   education: Education[];
   skills: Skills;
-  tools: string[];
   projects: string[];
-  portfolio: {
+  portfolio: Array<{
     YouTube?: string;
     GitHub?: string;
-  };
+  }>;
 }

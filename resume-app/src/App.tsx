@@ -13,7 +13,7 @@ function App() {
   useEffect(() => {
     const loadResumeData = async () => {
       try {
-        const response = await fetch('/resume.yaml');
+        const response = await fetch('../resume.yaml');
         if (!response.ok) {
           throw new Error('Failed to load resume data');
         }

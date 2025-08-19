@@ -20,16 +20,20 @@ const Resume: React.FC<ResumeProps> = ({ data }) => {
             <span>{data.contact.location}</span>
           </div>
           <div className="portfolio-links">
-            {data.portfolio.GitHub && (
-              <a href={data.portfolio.GitHub} target="_blank" rel="noopener noreferrer">
-                GitHub
-              </a>
-            )}
-            {data.portfolio.YouTube && (
-              <a href={data.portfolio.YouTube} target="_blank" rel="noopener noreferrer">
-                YouTube
-              </a>
-            )}
+            {data.portfolio.map((item, index) => (
+              <React.Fragment key={index}>
+                {item.GitHub && (
+                  <a href={item.GitHub} target="_blank" rel="noopener noreferrer">
+                    GitHub
+                  </a>
+                )}
+                {item.YouTube && (
+                  <a href={item.YouTube} target="_blank" rel="noopener noreferrer">
+                    YouTube
+                  </a>
+                )}
+              </React.Fragment>
+            ))}
             <a href={data.contact.linkedin} target="_blank" rel="noopener noreferrer">
               LinkedIn
             </a>
@@ -108,23 +112,13 @@ const Resume: React.FC<ResumeProps> = ({ data }) => {
               </ul>
             </div>
             <div className="skill-category">
-              <h4>Fun Skills</h4>
+              <h4>Tools & Technologies</h4>
               <ul>
-                {data.skills.fun.map((fun, index) => (
-                  <li key={index}>{fun}</li>
+                {data.skills.tools.map((tool, index) => (
+                  <li key={index}>{tool}</li>
                 ))}
               </ul>
             </div>
-          </div>
-        </section>
-
-        {/* Tools */}
-        <section className="section">
-          <h3>Tools & Technologies</h3>
-          <div className="tools-list">
-            {data.tools.map((tool, index) => (
-              <span key={index} className="tool-tag">{tool}</span>
-            ))}
           </div>
         </section>
 
