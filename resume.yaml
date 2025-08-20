@@ -64,10 +64,10 @@ skills:
     - Jira
 
 projects:
-  - House-Price-Prediction-Machine-Learning
-  - Parry-God
-  - Club Penguin AI
-  - Magic the Gathering AI
+  - House-Price-Prediction-Machine-Learning: https://github.com/BenjaBelnap/House-Price-Prediction-Machine-Learning
+  - Parry-God: https://github.com/BenjaBelnap/Parry-God
+  - Club Penguin AI: https://github.com/BenjaBelnap/Club-Penguin-AI
+  - Magic the Gathering AI: https://github.com/BenjaBelnap/Magic-the-Gathering-AI
 
 portfolio:
   - YouTube: https://www.youtube.com/watch?v=8RIIMyDkq1o&list=PLUzrl_qGh1VwDzHbBU4ZeU0BwMCtkR06B

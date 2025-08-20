@@ -331,10 +331,20 @@ class ResumeGenerator:
             
             for project in projects:
                 if isinstance(project, str):
+                    # Handle old format - just project name
                     story.append(Paragraph(f"• {project}", self.styles['BulletPoint']))
+                elif isinstance(project, dict):
+                    # Handle new format - project name with link
+                    for project_name, project_url in project.items():
+                        if project_url and project_url.startswith('http'):
+                            # Create hyperlink
+                            story.append(Paragraph(f'• <a href="{project_url}" color="#2980B9">{project_name}</a>', self.styles['BulletPoint']))
+                        else:
+                            # No link or invalid link, just show name
+                            story.append(Paragraph(f"• {project_name}", self.styles['BulletPoint']))
                 else:
-                    # Handle more complex project structure if needed
-                    story.append(Paragraph(f"• {project.get('name', str(project))}", self.styles['BulletPoint']))
+                    # Handle any other format as fallback
+                    story.append(Paragraph(f"• {str(project)}", self.styles['BulletPoint']))
         
         # Portfolio links
         portfolio = data.get('portfolio', [])
