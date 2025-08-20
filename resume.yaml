@@ -2,7 +2,8 @@ name: Ben Belnap
 title: Developer
 statement: >
   Developer seeks to utilize skills and education to enhance the success of a business in the tech sector.
-# image: headshot.jpg  # Optional: path to your profile image
+image:
+  - "profile.png"  # Optional: path to your profile image
 
 contact:
   email: ben.belnap21@gmail.com
