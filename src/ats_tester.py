@@ -325,11 +325,24 @@ class ATSTester:
 
 def main():
     """Main function to run ATS testing"""
-    pdf_file = "resume.pdf"
+    import sys
+    from pathlib import Path
     
-    if not os.path.exists(pdf_file):
+    # Default to looking in output directory
+    project_root = Path(__file__).parent.parent
+    output_dir = project_root / "output"
+    pdf_file = output_dir / "resume.pdf"
+    
+    # Allow command line argument for different PDF file
+    if len(sys.argv) > 1:
+        pdf_file = Path(sys.argv[1])
+        if not pdf_file.is_absolute():
+            pdf_file = output_dir / pdf_file
+    
+    if not pdf_file.exists():
         print(f"❌ PDF file not found: {pdf_file}")
-        print("Please generate your resume first by running: python resume_generator.py")
+        print("Please generate your resume first by running: python src/build.py")
+        print(f"Expected location: {pdf_file}")
         return
     
     # Check for required libraries
@@ -347,7 +360,7 @@ def main():
             return
     
     # Run ATS analysis
-    tester = ATSTester(pdf_file)
+    tester = ATSTester(str(pdf_file))
     results = tester.run_analysis()
     
     print(f"\n🎯 SUMMARY:")

@@ -4,7 +4,7 @@ pip install pdfplumber
 
 echo.
 echo Running ATS Compatibility Test...
-python ats_tester.py
+python src/ats_tester.py
 
 echo.
 pause

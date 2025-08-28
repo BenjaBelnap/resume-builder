@@ -3,9 +3,9 @@ echo Installing required packages...
 pip install -r requirements.txt
 
 echo.
-echo Generating resume PDF...
-python resume_generator.py
+echo Building resume and cover letter PDFs...
+python src/build.py
 
 echo.
-echo Done! Check resume.pdf
+echo Done! Check the output/ directory for your PDFs
 pause
