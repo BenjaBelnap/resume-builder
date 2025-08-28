@@ -1,0 +1,101 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{array}
+
+% Define colors
+\definecolor{primary}{HTML}{2C3E50}
+\definecolor{accent}{HTML}{2980B9}
+\definecolor{contact}{HTML}{27AE60}
+\definecolor{subtitle}{HTML}{34495E}
+
+% Custom formatting
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlist{nosep, leftmargin=1em}
+
+% Header formatting
+\pagestyle{empty}
+
+\begin{document}
+
+% Header with two columns: info on left, picture on right
+\begin{minipage}[t]{0.65\textwidth}
+    {\Huge\color{primary}\textbf{Ben Belnap}}\\[6pt]
+    {\Large\color{subtitle}Developer}\\[12pt]
+    
+    \textit{Developer seeks to utilize skills and education to enhance the success of a business in the tech sector.}\\[8pt]
+    
+    % Contact Information
+    {\color{contact}
+    \href{mailto:ben.belnap21@gmail.com}{ben.belnap21@gmail.com} $\bullet$ 
+    (801) 636-2374\\
+    \href{https://www.linkedin.com/in/ben-belnap}{linkedin.com/in/ben-belnap} $\bullet$ 
+    Salt Lake City, UT
+    }
+\end{minipage}%
+\hfill%
+\begin{minipage}[t]{0.3\textwidth}
+    \raggedleft
+    \includegraphics[width=0.8\textwidth]{profile.png}
+\end{minipage}
+
+\vspace{12pt}
+{\color{accent}\rule{\textwidth}{1pt}}
+\vspace{6pt}
+
+% Single column body
+\section*{{\color{accent}EXPERIENCE}}
+
+\textbf{Willis Towers Watson} \hfill \textit{November 2020 - May 2025}\\
+\textbf{Database Engineer} \hfill Salt Lake City, UT
+\begin{itemize}
+    \item Designed normalized SQL Server schemas and developed stored procedures, triggers, and functions for high-volume datasets
+    \item Created automated ETL tools using Python
+    \item Worked within Agile teams using Jira for service desk and development tasks
+\end{itemize}
+
+\textbf{Rocket LLC} \hfill \textit{May 2025 - August 2025}\\
+\textbf{Database Engineer Intern} \hfill Remote
+\begin{itemize}
+    \item Diagnosed and optimized SQL queries across Postgres, SQL Server, and MySQL
+    \item Developed and maintained Python-based ETL jobs
+\end{itemize}
+
+\textbf{Utah High School Mountain Bike League} \hfill \textit{July 2022 - Present (seasonal)}\\
+\textbf{Chief of Timing (IT Support)} \hfill Utah
+\begin{itemize}
+    \item Deployed and maintained event timing infrastructure
+    \item Handled on-site troubleshooting
+\end{itemize}
+
+\section*{{\color{accent}EDUCATION}}
+
+\textbf{Western Governors University} \hfill Salt Lake City, Utah\\
+\textbf{Bachelor of Science in Computer Science}
+
+\section*{{\color{accent}TECHNICAL SKILLS}}
+
+\textbf{Languages:} Python, SQL (T-SQL), C\#\\
+\textbf{Concepts:} Data Architecture, ETL Pipelines, Agile\\
+\textbf{Certifications:} tSQL, CompTIA Project+, ITIL 4 Foundations\\
+\textbf{Tools:} Visual Studio, Copilot, GitHub, Docker, SSMS, Microsoft Excel, Jira
+
+\section*{{\color{accent}PROJECTS}}
+
+\textbf{House Price Prediction:} \href{https://github.com/BenjaBelnap/House-Price-Prediction-Machine-Learning}{github.com/BenjaBelnap/House-Price-Prediction-Machine-Learning}\\
+\textbf{Parry God:} \href{https://github.com/BenjaBelnap/Parry-God}{github.com/BenjaBelnap/Parry-God}\\
+\textbf{Club Penguin AI:} \href{https://youtu.be/huqDNcsBJmA?si=JeCqGqGiTHdY9so1}{youtu.be/huqDNcsBJmA}\\
+\textbf{Magic the Gathering AI:} \href{https://youtu.be/8RIIMyDkq1o?si=IFQelgHKwUcTemNc}{youtu.be/8RIIMyDkq1o}
+
+\section*{{\color{accent}PORTFOLIO}}
+
+\textbf{YouTube:} \href{https://www.youtube.com/watch?v=8RIIMyDkq1o&list=PLUzrl_qGh1VwDzHbBU4ZeU0BwMCtkR06B}{youtube.com/watch?v=8RIIMyDkq1o\&list=PLUzrl\_qGh1VwDzHbBU4ZeU0BwMCtkR06B}\\
+\textbf{GitHub:} \href{https://github.com/BenjaBelnap}{github.com/BenjaBelnap}
+
+\end{document}

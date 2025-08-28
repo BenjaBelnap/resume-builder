@@ -1,0 +1,27 @@
+Tailor my resume to the following job description while maintaining professional tone and accuracy.
+
+Requirements:
+- Keep content similar in length to maintain single-page format
+- Do not add new sections or restructure the document 
+- Focus on relevant experience and skills from my background
+- Use specific examples and metrics when possible
+
+My Technical Background:
+Languages: Java, C#, Python, SQL (T-SQL, MySQL, PostgreSQL), PowerShell, Bash
+Databases: SQL Server, MySQL, PostgreSQL
+Concepts: Data Architecture, ETL Pipelines, Database Design, IT Service Management, Agile/Scrum
+Tools: Visual Studio, GitHub, Docker, SSMS, Jira, Power BI
+
+Guidelines:
+- Highlight most relevant experience for the target role
+- Adjust technical skills section to emphasize job-relevant technologies
+- Modify bullet points to align with job responsibilities
+- Ensure all claims are truthful and based on actual experience
+- If unsure about my experience with specific technologies, ask before including
+
+Structure to maintain:
+1. Contact information and professional statement
+2. Work experience (focus on most relevant roles)
+3. Education
+4. Technical skills
+5. Projects and portfolio
