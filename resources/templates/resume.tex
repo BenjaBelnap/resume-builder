@@ -1,109 +1,165 @@
-\documentclass[11pt]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[margin=0.5in]{geometry}
-\usepackage{graphicx}
-\usepackage{hyperref}
-\usepackage{xcolor}
+%------------------------
+% Modified "Ethan's Resume template" found here: https://github.com/necusjz/resume.tex
+%------------------------
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
 \usepackage{enumitem}
-\usepackage{multicol}
-\usepackage{array}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{ragged2e}
+\usepackage{etoolbox}
+\usepackage{tikz}
+\input{glyphtounicode}
 
-% Define colors
-\definecolor{primary}{HTML}{2C3E50}
-\definecolor{accent}{HTML}{2980B9}
-\definecolor{contact}{HTML}{27AE60}
-\definecolor{subtitle}{HTML}{34495E}
+% font options
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\linespread{1.05}
 
-% Custom formatting
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt}
-\setlist{nosep, leftmargin=1em}
+\pagestyle{fancy}
+\fancyhf{}  
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
 
-% Header formatting
-\pagestyle{empty}
+% adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+\setlength{\footskip}{5pt}
+
+% sections formatting
+\titleformat{\section}{
+  \vspace{-2pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule\vspace{-5pt}]
+
+% ensure ATS parsable
+\pdfgentounicode=1
+
+% custom commands
+\newcommand{\cvitem}[1]{
+  \item\small{
+    {#1\vspace{-2pt}}
+  }
+}
+
+\newcommand{\cvheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \small#3 & \small #4 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\cvheadingstart}{\begin{itemize}[leftmargin=0in, label={}]}
+\newcommand{\cvheadingend}{\end{itemize}}
+\newcommand{\cvitemstart}{\begin{itemize}[label=\textopenbullet]\justifying}
+\newcommand{\cvitemend}{\end{itemize}\vspace{-5pt}}
+
+\newcommand{\cvskill}[2]{
+  \textcolor{black}{\textbf{#1}}\hfill
+  \foreach \x in {1,...,5}{%
+    \space{\ifnumgreater{\x}{#2}{\color{black!80!white!20}}{\color{black}}\faSquare}}\par%
+  \vspace{-2pt}
+}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\footnotesize$\bullet$}}$}
 
 \begin{document}
 
-% Header with two columns: info on left, picture on right
-\begin{minipage}[t]{0.65\textwidth}
-    {\Huge\color{primary}\textbf{Ben Belnap}}\\[6pt]
-    {\Large\color{subtitle}Developer}\\[12pt]
-    
-    \textit{Developer seeks to utilize skills and education to enhance the success of a business in the tech sector.}\\[8pt]
-    
-    % Contact Information
-    {\color{contact}
-    \href{mailto:ben.belnap21@gmail.com}{ben.belnap21@gmail.com} $\bullet$ 
-    (801) 636-2374\\
-    \href{https://www.linkedin.com/in/ben-belnap}{linkedin.com/in/ben-belnap} $\bullet$ 
-    Salt Lake City, UT
-    }
-\end{minipage}%
-%\hfill%
-% \begin{minipage}[t]{0.3\textwidth}
-%     \raggedleft
-%     \includegraphics[width=0.8\textwidth]{profile.png}
-% \end{minipage}
+% contact information
+\begin{center}
+  \textbf{\LARGE\scshape Ben Belnap} \\
+  \vspace{1pt}\small
+  \href{mailto:ben.belnap21@gmail.com}{ben.belnap21@gmail.com}
+  $\ \diamond\ $ 
+  (801) 636-2374
+  $\ \diamond\ $
+  \href{https://github.com/BenjaBelnap}{github.com/BenjaBelnap}
+  $\ \diamond\ $
+  \href{https://www.linkedin.com/in/ben-belnap}{linkedin.com/in/ben-belnap}
+\end{center}
 
-\vspace{12pt}
-{\color{accent}\rule{\textwidth}{1pt}}
-%\vspace{6pt}
+\section{Professional Experience}
+\cvheadingstart
+  \cvheading
+    {Willis Towers Watson}{Salt Lake City, UT}
+    {Database Engineer}{Nov 2020 - May 2025}
+  \cvitemstart
+    \cvitem{Designed normalized SQL Server schemas and developed stored procedures, triggers, and functions for high-volume datasets}
+    \cvitem{Created automated ETL tools using Python}
+    \cvitem{Worked within Agile teams using Jira for service desk and development tasks}
+  \cvitemend
 
-% Single column body
-\section*{{\color{accent}EXPERIENCE}}
+  \cvheading
+    {Rocket LLC}{Remote}
+    {Database Engineer Intern}{May 2025 - Aug 2025}
+  \cvitemstart
+    \cvitem{Diagnosed and optimized SQL queries across Postgres, SQL Server, and MySQL}
+    \cvitem{Developed and maintained Python-based ETL jobs}
+  \cvitemend
 
-\textbf{Willis Towers Watson} \hfill \textit{November 2020 - May 2025}\\
-\textbf{Database Engineer} \hfill Salt Lake City, UT
-\begin{itemize}
-    \item Designed normalized SQL Server schemas and developed stored procedures, triggers, and functions for high-volume datasets
-    \item Created automated ETL tools using Python
-    \item Worked within Agile teams using Jira for service desk and development tasks
-\end{itemize}
+  \cvheading
+    {Utah High School Mountain Bike League}{Utah}
+    {Chief of Timing (IT Support)}{Jul 2022 - Present (seasonal)}
+  \cvitemstart
+    \cvitem{Deployed and maintained event timing infrastructure}
+    \cvitem{Handled on-site troubleshooting}
+  \cvitemend
+\cvheadingend
 
-\textbf{Rocket LLC} \hfill \textit{May 2025 - August 2025}\\
-\textbf{Database Engineer Intern} \hfill Remote
-\begin{itemize}
-    \item Diagnosed and optimized SQL queries across Postgres, SQL Server, and MySQL
-    \item Developed and maintained Python-based ETL jobs
-\end{itemize}
+\section{Education}
+\cvheadingstart
+  \cvheading
+    {Western Governors University}{Salt Lake City, UT}
+    {Bachelor of Science, Computer Science}{2025}
+\cvheadingend
 
-\textbf{Utah High School Mountain Bike League} \hfill \textit{July 2022 - Present (seasonal)}\\
-\textbf{Chief of Timing (IT Support)} \hfill Utah
-\begin{itemize}
-    \item Deployed and maintained event timing infrastructure
-    \item Handled on-site troubleshooting
-\end{itemize}
+\section{Technical Skills}
+\cvskill{Python}{4}
+\cvskill{SQL (T-SQL)}{4}
+\cvskill{C\#}{3}
+\cvskill{Data Architecture}{4}
+\cvskill{ETL Pipelines}{4}
+\cvskill{Agile}{4}
+\cvskill{Tools: Visual Studio, Copilot, GitHub, Docker, SSMS, Excel, Jira}{4}
+\cvskill{Certifications: tSQL, CompTIA Project+, ITIL 4 Foundations}{4}
 
-{\color{accent}\rule{\textwidth}{1pt}}
+\section{Projects}
+\cvheadingstart
+\item
+\cvitemstart
+  \cvitem{\textbf{House Price Prediction:} \href{https://github.com/BenjaBelnap/House-Price-Prediction-Machine-Learning}{github.com/BenjaBelnap/House-Price-Prediction-Machine-Learning}}
+  \cvitem{\textbf{Parry God:} \href{https://github.com/BenjaBelnap/Parry-God}{github.com/BenjaBelnap/Parry-God}}
+  \cvitem{\textbf{Club Penguin AI:} \href{https://youtu.be/huqDNcsBJmA?si=JeCqGqGiTHdY9so1}{youtu.be/huqDNcsBJmA}}
+  \cvitem{\textbf{Magic the Gathering AI:} \href{https://youtu.be/8RIIMyDkq1o?si=IFQelgHKwUcTemNc}{youtu.be/8RIIMyDkq1o}}
+\cvitemend
+\cvheadingend
 
-\section*{{\color{accent}EDUCATION}}
-
-\textbf{Western Governors University} \hfill Salt Lake City, Utah\\
-\textbf{Bachelor of Science in Computer Science}
-
-{\color{accent}\rule{\textwidth}{1pt}}
-
-\section*{{\color{accent}TECHNICAL SKILLS}}
-
-\textbf{Languages:} Python, SQL (T-SQL), C\#\\
-\textbf{Concepts:} Data Architecture, ETL Pipelines, Agile\\
-\textbf{Certifications:} tSQL, CompTIA Project+, ITIL 4 Foundations\\
-\textbf{Tools:} Visual Studio, Copilot, GitHub, Docker, SSMS, Microsoft Excel, Jira
-
-{\color{accent}\rule{\textwidth}{1pt}}
-
-\section*{{\color{accent}PROJECTS}}
-
-\textbf{House Price Prediction:} \href{https://github.com/BenjaBelnap/House-Price-Prediction-Machine-Learning}{github.com/BenjaBelnap/House-Price-Prediction-Machine-Learning}\\
-\textbf{Parry God:} \href{https://github.com/BenjaBelnap/Parry-God}{github.com/BenjaBelnap/Parry-God}\\
-\textbf{Club Penguin AI:} \href{https://youtu.be/huqDNcsBJmA?si=JeCqGqGiTHdY9so1}{youtu.be/huqDNcsBJmA}\\
-\textbf{Magic the Gathering AI:} \href{https://youtu.be/8RIIMyDkq1o?si=IFQelgHKwUcTemNc}{youtu.be/8RIIMyDkq1o}
-
-{\color{accent}\rule{\textwidth}{1pt}}
-
-\section*{{\color{accent}PORTFOLIO}}
-
-\textbf{YouTube:} \href{https://www.youtube.com/watch?v=8RIIMyDkq1o&list=PLUzrl_qGh1VwDzHbBU4ZeU0BwMCtkR06B}{youtube.com/watch?v=8RIIMyDkq1o\&list=PLUzrl\_qGh1VwDzHbBU4ZeU0BwMCtkR06B}\\
-\textbf{GitHub:} \href{https://github.com/BenjaBelnap}{github.com/BenjaBelnap}
+\section{Portfolio}
+\cvheadingstart
+\item
+\cvitemstart
+  \cvitem{\textbf{YouTube:} \href{https://www.youtube.com/watch?v=8RIIMyDkq1o&list=PLUzrl_qGh1VwDzHbBU4ZeU0BwMCtkR06B}{youtube.com/playlist}}
+  \cvitem{\textbf{GitHub:} \href{https://github.com/BenjaBelnap}{github.com/BenjaBelnap}}
+\cvitemend
+\cvheadingend
 
 \end{document}
