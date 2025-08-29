@@ -1,46 +1,168 @@
-# Getting Started with Create React App
+# Resume Builder - LaTeX Edition
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A professional resume and cover letter generator using LaTeX templates for high-quality PDF output.
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+This project generates professional resumes and cover letters using LaTeX templates. It provides ATS-friendly formatting with a clean, modern design featuring a two-column header with profile image and single-column body layout.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **LaTeX-based rendering** for professional typography and consistent formatting
+- **Two-column header** with profile image support
+- **Single-column body** for optimal readability and ATS compatibility
+- **Automated build system** with Python script
+- **ATS compatibility testing** with detailed analysis
+- **Modular template system** for easy customization
+- **AI-powered content tailoring** using structured prompts
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Project Structure
 
-### `npm test`
+```
+├── src/                           # Source code
+│   ├── build.py                   # Main build script for LaTeX compilation
+│   ├── ats_tester.py             # ATS compatibility analyzer
+│   └── resume_generator.py       # Legacy Python-based generator
+├── resources/                     # Templates and assets
+│   ├── templates/                 # LaTeX templates
+│   │   ├── resume.tex            # Main resume template
+│   │   ├── coverletter_template.tex # Cover letter template
+│   │   └── coverletter.tex       # Generated cover letter (optional)
+│   ├── prompts/                   # AI assistance prompts
+│   │   ├── ResumePrompt.txt      # Resume tailoring instructions
+│   │   └── coverLetterPrompt.txt # Cover letter generation instructions
+│   └── images/                    # Profile images and assets
+│       └── profile.png           # Profile photo
+├── output/                        # Generated PDF files
+├── temp/                          # Temporary compilation files
+├── generate_resume.bat           # Windows batch file for easy building
+├── test_ats.bat                  # Windows batch file for ATS testing
+└── requirements.txt              # Python dependencies
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Quick Start
 
-### `npm run build`
+### Windows (Batch Files)
+```bash
+# Generate resume and cover letter
+.\generate_resume.bat
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Test ATS compatibility
+.\test_ats.bat
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Manual Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Build Documents
+```bash
+# Install dependencies
+pip install -r requirements.txt
 
-### `npm run eject`
+# Build all documents (resume + cover letter)
+python src/build.py
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Build specific document
+python src/build.py resume
+python src/build.py coverletter
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Clean temporary files
+python src/build.py clean
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Test ATS Compatibility
+```bash
+# Test default resume.pdf in output directory
+python src/ats_tester.py
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# Test specific PDF file
+python src/ats_tester.py path/to/resume.pdf
+```
 
-## Learn More
+## Usage Workflow
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 1. Edit Templates
+- Modify `resources/templates/resume.tex` with your information
+- Use `resources/templates/coverletter_template.tex` as base for cover letters
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 2. Build PDFs
+- Run `python src/build.py` to compile LaTeX templates to PDF
+- Output files are saved in `output/` directory
+
+### 3. Test ATS Compatibility
+- Run `python src/ats_tester.py` to analyze resume for ATS compatibility
+- Get detailed feedback and recommendations
+
+### 4. AI-Assisted Tailoring
+Use the prompts in `resources/prompts/` with your preferred AI assistant to:
+- Tailor resume content to specific job descriptions
+- Generate customized cover letters
+- Maintain consistent formatting and professional tone
+
+## Technical Requirements
+
+### LaTeX Distribution
+- **Windows**: MiKTeX or TeX Live
+- **macOS**: MacTeX
+- **Linux**: TeX Live
+
+### Python Packages
+```bash
+pip install pdfplumber  # For ATS testing
+```
+
+### Required LaTeX Packages
+- `geometry` - Page layout
+- `graphicx` - Image handling
+- `hyperref` - Clickable links
+- `xcolor` - Color definitions
+- `enumitem` - List formatting
+- `array` - Table formatting
+
+## Customization
+
+### Colors
+Edit the color definitions in the LaTeX templates:
+```latex
+\definecolor{primary}{HTML}{2C3E50}    % Dark blue-gray
+\definecolor{accent}{HTML}{2980B9}     % Blue
+\definecolor{contact}{HTML}{27AE60}    % Green
+\definecolor{subtitle}{HTML}{34495E}   % Gray
+```
+
+### Layout
+Modify spacing, fonts, and section layouts in the template files under `resources/templates/`.
+
+### Images
+Replace `resources/images/profile.png` with your profile photo.
+
+## Build System Features
+
+The `src/build.py` script provides:
+- **Automatic LaTeX compilation** with error handling
+- **Multi-pass compilation** for complex documents
+- **Temporary file management** 
+- **Output organization** in dedicated directory
+- **Command-line options** for specific builds
+
+## ATS Testing Features
+
+The `src/ats_tester.py` script analyzes:
+- **Text extraction quality** from PDF
+- **Contact information presence** 
+- **Standard section headers**
+- **Formatting compatibility**
+- **Content quality metrics**
+- **Overall compatibility score** (0-100)
+
+## Legacy Components
+
+- `src/resume_generator.py` - Python-based PDF generator using ReportLab
+- Maintained for backward compatibility but LaTeX approach is recommended
+
+## Design Features
+
+- **Professional color scheme** using corporate blues and greens
+- **ATS-friendly formatting** with proper heading structure
+- **Clickable links** for email, LinkedIn, GitHub, and project URLs
+- **Clean typography** with appropriate spacing and hierarchy
+- **Responsive layout** that works well on different page sizes

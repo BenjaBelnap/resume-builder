@@ -1,0 +1,32 @@
+Write a concise cover letter using the LaTeX template located at `/resources/templates/coverletter_template.tex`.
+
+Tone Guidelines:
+- Professional but plain—avoid excessive adjectives or buzzwords
+- Avoid the use of the em dash
+- Focus on concrete experience and specific contributions
+
+Content Structure:
+1. **Opening:** State the position and intent to apply
+2. **Body:** Highlight 2–3 relevant roles/projects with specific accomplishments
+3. **Skills:** Mention tools, technologies, or skills relevant to the job posting
+4. **Closing:** End with a simple closing statement about interest in the company
+
+Instructions:
+- Use the job description and resume provided to tailor the cover letter
+- Replace all bracketed placeholders in the template with appropriate content
+- Keep paragraphs concise and focused on how my experience fits the responsibilities
+- Emphasize measurable outcomes and specific technologies when possible
+
+Template placeholders to fill:
+- [DATE] - Current date
+- [HIRING COMMITTEE INFO] - Company name and department if provided
+- [JOB TITLE] - Exact job title from posting
+- [COMPANY] - Company name
+- [DEGREE OR CERTIFICATIONS] - Relevant education/certifications
+- [AREA OF EXPERTISE] - Primary skill area relevant to role
+- [COMPANY 1/2] - Previous employers with relevant experience
+- [RESPONSIBILITIES / PROJECTS] - Specific accomplishments and duties
+- [TECHNOLOGIES / TOOLS] - Technical skills matching job requirements
+- [RELEVANT SKILLS] - Soft skills and methodologies
+- [MISSION / IMPACT AREA] - Company's focus area or mission
+- Contact information placeholders
