@@ -4,7 +4,7 @@ Requirements:
 - Keep content similar in length to maintain single-page format
 - Do not add new sections or restructure the document 
 - Focus on relevant experience and skills from my background
-- Use specific examples and metrics when possible
+
 
 My Technical Background:
 Languages: Java, C#, Python, SQL (T-SQL, MySQL, PostgreSQL), PowerShell, Bash
