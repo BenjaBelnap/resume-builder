@@ -11,6 +11,8 @@ Languages: Java, C#, Python, SQL (T-SQL, MySQL, PostgreSQL), PowerShell, Bash
 Databases: SQL Server, MySQL, PostgreSQL
 Concepts: Data Architecture, ETL Pipelines, Database Design, IT Service Management, Agile/Scrum
 Tools: Visual Studio, GitHub, Docker, SSMS, Jira, Power BI
+Projects you can use:
+Mini Social - https://github.com/BenjaBelnap/Mini-Social - Showcases automated testing and CICD pipeline, uses test driven development (TDD). Writen in C# / .net. MongoDb used for data storage.
 
 Guidelines:
 - Highlight most relevant experience for the target role
