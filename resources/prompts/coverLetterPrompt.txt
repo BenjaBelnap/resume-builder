@@ -1,5 +1,6 @@
 Write a concise cover letter using the LaTeX template located at `/resources/templates/coverletter_template.tex`.
 Put the output into `/resources/templates/coverletter.tex`
+Make sure to use escape characters when necessary
 
 Tone Guidelines:
 - Professional but plain—avoid excessive adjectives or buzzwords
