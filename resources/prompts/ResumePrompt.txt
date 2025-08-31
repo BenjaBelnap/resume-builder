@@ -7,12 +7,27 @@ Requirements:
 
 
 My Technical Background:
-Languages: Java, C#, Python, SQL (T-SQL, MySQL, PostgreSQL), PowerShell, Bash
+Languages: Java, C#, Python, SQL, PowerShell, Bash
 Databases: SQL Server, MySQL, PostgreSQL
 Concepts: Data Architecture, ETL Pipelines, Database Design, IT Service Management, Agile/Scrum
-Tools: Visual Studio, GitHub, Docker, SSMS, Jira, Power BI
-Projects you can use:
+Tools: Visual Studio, GitHub, Docker, SSMS, Jira, Docker, Azure, AWS, AWS RDS, Azure Data Factory, Spring boot
+
+Additional Projects:
 Mini Social - https://github.com/BenjaBelnap/Mini-Social - Showcases automated testing and CICD pipeline, uses test driven development (TDD). Writen in C# / .net. MongoDb used for data storage.
+
+Additional work experience details (only use if relevant):
+Willis Towers Watson
+ - Worked a service desk for manual data updates and business proccesses, during my time there I streamlined and automated around 90% of my job
+ - Practiced It service management principles to standardize common service requests, documenting them, and eventually automating them
+ - Worked on agile development teams
+ - debugged internal react typescript C# .net applications
+
+Utah High School Mountain Bike League
+ - worked with race result software
+ - setup complicated timing equipment
+ - lifted heavy objects
+ - practiced customer service with parents and coaches who had questions about times
+
 
 Guidelines:
 - Highlight most relevant experience for the target role
