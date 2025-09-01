@@ -9,7 +9,7 @@ Requirements:
 My Technical Background:
 Languages: Java, C#, Python, SQL, PowerShell, Bash
 Databases: SQL Server, MySQL, PostgreSQL
-Concepts: Data Architecture, ETL Pipelines, Database Design, IT Service Management, Agile/Scrum, CI/CD
+Concepts: Data Architecture, ETL Pipelines, Database Design, IT Service Management, Agile/Scrum, CI/CD, infrastructure as code
 Tools: Visual Studio, GitHub, Docker, SSMS, Jira, Docker, Azure, AWS, AWS RDS, Azure Data Factory, Spring boot
 
 Additional Projects:
