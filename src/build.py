@@ -133,8 +133,8 @@ class DocumentBuilder:
             success_count += 1
         
         # Build cover letter
-        if self.build_cover_letter():
-            success_count += 1
+        # if self.build_cover_letter():
+        #     success_count += 1
         
         # Clean up
         self.clean_temp_files()
