@@ -23,17 +23,46 @@ class DocumentBuilder:
         self.output_dir.mkdir(exist_ok=True)
         self.temp_dir.mkdir(exist_ok=True)
     
-    def check_latex_installation(self):
-        """Check if LaTeX is installed and available"""
+    def find_pdflatex(self):
+        """Find pdflatex executable"""
+        # Common MiKTeX installation paths
+        common_paths = [
+            Path(os.environ.get('LOCALAPPDATA', '')) / 'Programs' / 'MiKTeX' / 'miktex' / 'bin' / 'x64' / 'pdflatex.exe',
+            Path('C:/Program Files/MiKTeX/miktex/bin/x64/pdflatex.exe'),
+            Path('C:/Program Files (x86)/MiKTeX/miktex/bin/x64/pdflatex.exe'),
+        ]
+        
+        # Try to find pdflatex in PATH first
         try:
             result = subprocess.run(['pdflatex', '--version'], 
                                   capture_output=True, text=True, check=True)
-            print("✓ LaTeX installation found")
-            return True
+            return 'pdflatex'
         except (subprocess.CalledProcessError, FileNotFoundError):
-            print("✗ LaTeX installation not found")
-            print("Please install a LaTeX distribution (TeX Live, MiKTeX, etc.)")
-            return False
+            pass
+        
+        # Try common installation paths
+        for path in common_paths:
+            if path.exists():
+                return str(path)
+        
+        return None
+    
+    def check_latex_installation(self):
+        """Check if LaTeX is installed and available"""
+        self.pdflatex_cmd = self.find_pdflatex()
+        
+        if self.pdflatex_cmd:
+            try:
+                result = subprocess.run([self.pdflatex_cmd, '--version'], 
+                                      capture_output=True, text=True, check=True)
+                print("✓ LaTeX installation found")
+                return True
+            except (subprocess.CalledProcessError, FileNotFoundError):
+                pass
+        
+        print("✗ LaTeX installation not found")
+        print("Please install a LaTeX distribution (TeX Live, MiKTeX, etc.)")
+        return False
     
     def compile_latex(self, tex_file: Path, output_name: str = None):
         """Compile a LaTeX file to PDF"""
@@ -59,7 +88,7 @@ class DocumentBuilder:
         try:
             # First pass
             result = subprocess.run([
-                'pdflatex', 
+                self.pdflatex_cmd, 
                 '-interaction=nonstopmode',
                 '-output-directory', str(self.temp_dir),
                 str(temp_tex)
