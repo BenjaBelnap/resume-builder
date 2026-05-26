@@ -1,5 +1,7 @@
 Tailor my resume to the following job description while maintaining professional tone and accuracy.
 
+Prompt the user probing for experience required but not listed here.
+
 Requirements:
 - Keep content similar in length to maintain single-page format
 - Do not add new sections or restructure the document 
