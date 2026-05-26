@@ -16,6 +16,7 @@ Tools: Visual Studio, GitHub, Docker, SSMS, Jira, Azure, AWS, AWS RDS, Azure Dat
 
 Additional Projects:
 Mini Social - https://github.com/BenjaBelnap/Mini-Social - Showcases automated testing and CICD pipeline, uses test driven development (TDD). Writen in C# / .net. MongoDb used for data storage.
+Pieces of Them - https://github.com/Diya-Mandot/PiecesOfThem - PiecesOfThem is an agentic evidence workbench for turning Sanfilippo lived-experience data into reviewer-friendly, citation-backed clinical evidence. Won first place at OpenAI x University of Utah Hackathon
 
 Additional work experience details (only use if relevant):
 Huntsman Cancer Institute
