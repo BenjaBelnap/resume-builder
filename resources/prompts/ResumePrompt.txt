@@ -1,6 +1,8 @@
 Tailor my resume to the following job description while maintaining professional tone and accuracy.
 
-Prompt the user probing for experience required but not listed here.
+Edit resume.tex directly. Do not compile/build the PDF or re-read files already supplied in this prompt.
+
+If anything is unclear or unverified (e.g. required experience not listed below, or specific technologies), ask ALL clarifying questions in ONE batched round before editing — do not ask iteratively.
 
 Requirements:
 - Keep content similar in length to maintain single-page format
@@ -44,8 +46,7 @@ Guidelines:
 - Highlight most relevant experience for the target role
 - Adjust technical skills section to emphasize job-relevant technologies
 - Modify bullet points to align with job responsibilities
-- Ensure all claims are truthful and based on actual experience
-- If unsure about my experience with specific technologies, ask before including
+- Ensure all claims are truthful and based on actual experience (fold any uncertainty into the single batched question round above)
 
 Structure to maintain:
 1. Contact information and professional statement
