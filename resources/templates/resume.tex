@@ -16,8 +16,6 @@
 \usepackage{tabularx}
 \usepackage{fontawesome5}
 \usepackage{ragged2e}
-\usepackage{etoolbox}
-\usepackage{tikz}
 \input{glyphtounicode}
 
 % font options
@@ -26,7 +24,7 @@
 \linespread{1.05}
 
 \pagestyle{fancy}
-\fancyhf{}  
+\fancyhf{}
 \fancyfoot{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
@@ -73,13 +71,6 @@
 \newcommand{\cvitemstart}{\begin{itemize}[label=\textopenbullet]\justifying}
 \newcommand{\cvitemend}{\end{itemize}\vspace{-5pt}}
 
-\newcommand{\cvskill}[2]{
-  \textcolor{black}{\textbf{#1}}\hfill
-  \foreach \x in {1,...,5}{%
-    \space{\ifnumgreater{\x}{#2}{\color{black!80!white!20}}{\color{black}}\faSquare}}\par%
-  \vspace{-2pt}
-}
-
 \renewcommand\labelitemii{$\vcenter{\hbox{\footnotesize$\bullet$}}$}
 
 \begin{document}
@@ -89,7 +80,7 @@
   \textbf{\LARGE\scshape Ben Belnap} \\
   \vspace{1pt}\small
   \href{mailto:ben.belnap21@gmail.com}{ben.belnap21@gmail.com}
-  $\ \diamond\ $ 
+  $\ \diamond\ $
   (801) 636-2374
   $\ \diamond\ $
   \href{https://github.com/BenjaBelnap}{github.com/BenjaBelnap}
@@ -97,17 +88,23 @@
   \href{https://www.linkedin.com/in/benbelnap21/}{https://www.linkedin.com/in/benbelnap21/}
 \end{center}
 
+\vspace{-2pt}
+\begin{center}
+  \small\justifying
+  Database Administrator with a software engineering background, focused on automating infrastructure and AI-assisted tooling to keep production data reliable.
+\end{center}
+
 \section{Professional Experience}
 \cvheadingstart
 
  \cvheading
-    {Hunstman Cancer Institute}{Salt Lake City, UT}
+    {Huntsman Cancer Institute}{Salt Lake City, UT}
     {Database Administrator}{Sep 2025 - Present}
   \cvitemstart
-  \cvitem{Utilized Flyway and Gitlab CI/CD pipelines to manage database changes across development, staging, and production environments}
-  \cvitem{Engineered and deployed a comprehensive SQL Server monitoring suite (using PowerShell and DbaDash) where no formal monitoring previously existed, enabling proactive alerting and 24/7 visibility into server health.}
-  \cvitem{Established and executed critical maintenance protocols (index optimization, integrity checks, and statistics updates) during scheduled windows, significantly reducing fragmented data and improving query response times.}
-  \cvitem{Developed Docker-based testing environments to allow developers to validate database changes locally, accelerating the development lifecycle.}
+  \cvitem{Designed and implemented a CI/CD pipeline for database deployments using Flyway and GitLab Runners, enabling repeatable, version-controlled schema changes across environments}
+  \cvitem{Built a centralized Grafana monitoring platform (DbaDash + Prometheus) across 11 SQL Server, 2 MongoDB, and 1 MariaDB instances (~5TB), catching 1-2 major issues/month before outages; adopted org-wide by application teams}
+  \cvitem{Built an AI-queryable database metadata layer (extended with OpenMetadata) exposing schema and lineage to AI coding assistants without exposing PHI, used daily for AI-assisted development}
+  \cvitem{Built an OMOP concept-mapping pipeline (vector database + LLM, on the open-source LETTUCE project), improving accuracy from 60\% to 95\%+ through iterative tuning; in beta for SME rollout}
   \cvitemend
 
  \cvheading
@@ -119,58 +116,41 @@
   \cvitemend
 
   \cvheading
-    {Huntsman Cancer Institute}{Salt Lake City, UT}
-    {Database Administrator}{Sep 2025 - Present}
-  \cvitemstart
-  \cvitem{Designed and implemented a CI/CD pipeline for database deployments using Flyway and GitLab Runners, enabling repeatable, version-controlled schema changes across environments}
-  \cvitem{Diagnosed and corrected database configuration issues, significantly reducing unplanned failovers and improving overall system stability}
-  \cvitem{Partnered with application and infrastructure teams to support production SQL Server workloads in a healthcare research environment with high availability and reliability requirements}
-  \cvitemend
-
-
-
-  \cvheading
     {Willis Towers Watson}{Salt Lake City, UT}
     {Database Engineer}{Nov 2020 - May 2025}
   \cvitemstart
   \cvitem{Designed and optimized SQL Server schemas and implemented stored procedures, triggers, and functions to improve query performance by up to 300\%}
   \cvitem{Redesigned destination tables for the Log File Analysis ETL (C\#, Azure Functions), resolving ingestion bottlenecks and increasing throughput by over 100\%}
-  \cvitem{Owned the Loss of Funding process for two years: enabled customer teams to recover \$1.5M+ annually by refactoring legacy code, resolving production defects, and producing documentation and trainings to transfer ownership}
-  \cvitemend
-
-
-  \cvheading
-    {Utah High School Cycling League}{Utah}
-    {Chief of Timing (IT Support)}{Jul 2022 - Present (seasonal)}
-  \cvitemstart
-  \cvitem{Deployed and maintained on-site timing and computer infrastructure; trained volunteers and race staff on operations}
-  \cvitem{Supported 1200+ racers across 10+ annual events with zero major system failures}
+  \cvitem{Owned the Loss of Funding process for two years: recovered \$1.5M+ annually for customer teams by refactoring legacy T-SQL stored procedures, resolving production defects, and documenting for ownership transfer}
   \cvitemend
 \cvheadingend
 
 \section{Education}
 \cvheadingstart
   \cvheading
+    {Georgia Institute of Technology}{Atlanta, GA (Online)}
+    {Master of Science in Computer Science, Computing Systems}{Started Fall 2026}
+  \cvheading
     {Western Governors University}{Salt Lake City, UT}
     {Bachelor of Science, Computer Science}{2025}
-  \cvheading
-    {Utah Valley University}{Orem, UT}
-    {Associate of Science; 2.51 GPA}{2020}
 \cvheadingend
 
 \section{Technical Skills}
-\cvskill{Python}{4}
-\cvskill{SQL (T-SQL)}{5}
-\cvskill{C\#}{2}
-\cvskill{ETL Pipelines (SSIS)}{3}
-\cvskill{Agile}{4}
+\cvheadingstart
+\item
+\cvitemstart
+  \cvitem{\textbf{Database Administration:} SQL Server, MySQL, PostgreSQL, MongoDB, T-SQL, Performance Tuning}
+  \cvitem{\textbf{Cloud \& DevOps:} Docker, Azure, AWS, GitLab CI/CD, Flyway, Infrastructure as Code}
+  \cvitem{\textbf{Monitoring \& AI Tooling:} Grafana, Prometheus, DbaDash, OpenMetadata, AI-Assisted Development}
+  \cvitem{\textbf{Languages:} Java, C\#, Python, PowerShell, Bash}
+\cvitemend
+\cvheadingend
 
 \section{Personal Projects}
 \cvheadingstart
 \item
 \cvitemstart
-  \cvitem{\href{https://github.com/BenjaBelnap/House-Price-Prediction-Machine-Learning}{\textbf{House Price Prediction: (click me!)}} House Price Prediction — Python (Pandas, Scikit-learn, XGBoost) — data cleaning, ML training, and visualizations.}
-  \cvitem{\href{https://github.com/BenjaBelnap/Parry-God}{\textbf{Parry God:}} 48-hour game jam — Godot (GDScript) — complete game built in Godot under tight deadline with one partner.}
+  \cvitem{\href{https://github.com/Diya-Mandot/PiecesOfThem}{\textbf{Pieces of Them:}} Agentic evidence workbench turning lived-experience data into citation-backed clinical evidence — built the Python/PostgreSQL LLM ingestion pipeline that normalizes raw text into structured JSON. 1st place, OpenAI x University of Utah Hackathon.}
 \cvitemend
 \cvheadingend
 

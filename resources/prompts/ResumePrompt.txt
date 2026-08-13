@@ -6,28 +6,36 @@ If anything is unclear or unverified (e.g. required experience not listed below,
 
 Requirements:
 - Keep content similar in length to maintain single-page format
-- Do not add new sections or restructure the document 
+- Do not add new sections or restructure the document
 - Focus on relevant experience and skills from my background
+- Preserve the professional summary line under my contact info (2-3 sentences). Adjust its emphasis to match the target role, but keep the core identity: a Database Administrator with a software engineering background who leads with automation
+- Keep the Technical Skills section grouped by domain, as plain lists (not proficiency ratings). Choose category labels that fit the target role rather than defaulting to generic "Tools"/"Concepts" buckets — e.g. for a DevOps-heavy role use something like "Cloud & DevOps"; for a data-engineering role use "ETL & Data Pipelines"; keep "Database Administration" and "Languages" as anchors since those are always relevant
+- Never remove quantitative metrics (e.g. $1.5M+, 1-2 major issues/month, 300% improvement, 95%+ accuracy, 11 SQL Server instances) when rewriting bullets — integrate them into the new phrasing rather than generalizing them away
+- Never list the same employer in two separate entries — merge into one heading with the best bullets. Keep entries in strict reverse-chronological order by end date
 
 
 My Technical Background:
 Languages: Java, C#, Python, SQL, PowerShell, Bash
-Databases: SQL Server, MySQL, PostgreSQL
+Databases: SQL Server, MySQL, PostgreSQL, MongoDB
 Concepts: Data Architecture, ETL Pipelines, Database Design, IT Service Management, Agile/Scrum, CI/CD, infrastructure as code, AI-assisted development
-Tools: Visual Studio, GitHub, Docker, SSMS, Jira, Azure, AWS, AWS RDS, Azure Data Factory, Spring boot, github copilot, Flyway, DbaDash, dbt, Apache Airflow, SSIS, GitLab CI/CD
+Tools: Visual Studio, GitHub, Docker, SSMS, Jira, Azure, AWS, AWS RDS, Azure Data Factory, Spring boot, github copilot, Flyway, DbaDash, dbt, Apache Airflow, SSIS, GitLab CI/CD, Grafana, Prometheus, OpenMetadata
 
 Additional Projects:
-Mini Social - https://github.com/BenjaBelnap/Mini-Social - Showcases automated testing and CICD pipeline, uses test driven development (TDD). Writen in C# / .net. MongoDb used for data storage.
-Pieces of Them - https://github.com/Diya-Mandot/PiecesOfThem - PiecesOfThem is an agentic evidence workbench for turning Sanfilippo lived-experience data into reviewer-friendly, citation-backed clinical evidence. Won first place at OpenAI x University of Utah Hackathon
+Pieces of Them - https://github.com/Diya-Mandot/PiecesOfThem - Agentic evidence workbench for turning Sanfilippo lived-experience data into reviewer-friendly, citation-backed clinical evidence. Team of 3; I owned the AI/RAG lane and built the Python + PostgreSQL LLM ingestion pipeline, calling the OpenAI API (gpt-4o-mini) to normalize raw scraped text into structured, citation-backed JSON for downstream storage. One teammate built the frontend, the other built the backend API on top of my curated data. Won first place at OpenAI x University of Utah Hackathon.
+Mini Social - https://github.com/BenjaBelnap/Mini-Social - A boxes-checking project to get reps with C# / .NET and MongoDB; showcases automated testing, TDD, and a CI/CD pipeline. Not a strong showcase project — only pull this in if a job description is heavily C#/.NET-focused and nothing stronger fits.
+House Price Prediction - https://github.com/BenjaBelnap/House-Price-Prediction-Machine-Learning - Python (Pandas, Scikit-learn, XGBoost) — data cleaning, ML training, and visualizations. Pull this in over Pieces of Them only if the role is data-science/ML-heavy rather than engineering/pipeline-heavy.
 
 Additional work experience details (only use if relevant):
 Huntsman Cancer Institute
  - Utilized Flyway and GitLab CI/CD pipelines to manage database changes across development, staging, and production environments
- - Engineered and deployed a comprehensive SQL Server monitoring suite using PowerShell and DbaDash where no formal monitoring previously existed, enabling proactive alerting and 24/7 visibility into server health
+ - Built a centralized monitoring platform (ongoing since Q1 2026): piped DbaDash and Prometheus metrics from SQL Server, MariaDB, and MongoDB into unified Grafana dashboards and alerting. Covers 11 SQL Server instances, 2 MongoDB, and 1 MariaDB (~5TB total). Went from no formal monitoring to catching 1-2 major issues per month before they cause outages; application teams have since adopted the same dashboards for their own monitoring
+ - Built an AI-queryable database metadata layer that exposes schema and lineage to AI coding assistants without exposing PHI in the underlying tables; later extended using OpenMetadata. Use it daily for AI-assisted development. Next step: AI-assisted lineage tracking for SSIS ETL pipelines, using the same human-in-the-loop review pattern as the OMOP mapping work, eventually to support researcher-facing chatbots for data discovery
+ - Developed an OMOP concept-mapping pipeline (started Q2 2026, currently in beta) combining a vector database and an LLM, built on the open-source LETTUCE project; improved mapping accuracy from ~60% (first pass) to 95%+ through iterative tuning. Currently working toward putting the review front end in front of subject-matter experts
  - Established and executed critical maintenance protocols (index optimization, integrity checks, statistics updates) during scheduled windows, significantly reducing fragmented data and improving query response times
  - Developed Docker-based testing environments to allow developers to validate database changes locally, accelerating the development lifecycle
  - Developed ETL pipelines using SSIS, Apache Airflow, and dbt
- - Created access control tools to protect PHI while allowing AI to access database schema for SQL query generation
+ - General DBA work across performance tuning, monitoring, and security (managing user/role permissions)
+ - Use dbatools (PowerShell) regularly for DBA automation, including live migrations; currently building automated database refreshes from prod to stage
  - Serve on the team leading adoption of AI-assisted development (Claude Code, agentic coding tools) across the organization, using AI as a force multiplier to accelerate delivery
 
 Willis Towers Watson
@@ -35,15 +43,19 @@ Willis Towers Watson
  - Practiced It service management principles to standardize common service requests, documenting them, and eventually automating them
  - Worked on agile development teams
  - debugged internal react typescript C# .net applications
+ - Loss of Funding legacy code refactor was entirely T-SQL stored procedures
 
 Rocket LLC
  - Learned AI-assisted development practices and tools during internship, later applied to lead adoption efforts at Huntsman Cancer Institute
 
-Utah High School Mountain Bike League
- - worked with race result software
- - setup complicated timing equipment
- - lifted heavy objects
- - practiced customer service with parents and coaches who had questions about times
+PS Administrators - independent contractor, started Jul 2026 (only a few weeks in as of Aug 2026 — light on established results, do not overstate). Do not add to the default resume yet; only pull in if a job description is specifically about independent/contract DBA or VB.NET work
+ - Maintaining a Visual Basic .NET application: mostly file processing, loading results into a SQL Server database, plus a couple of front-end apps used to manage the process
+
+Utah High School Cycling League - Chief of Timing (IT Support), Jul 2022 - Present (seasonal) - cut from the default resume to save space; only pull in if the role is IT support, event ops, or otherwise values hands-on infrastructure/customer-facing work
+ - Deployed and maintained on-site timing and computer infrastructure; trained volunteers and race staff on operations
+ - Supported 1200+ racers across 10+ annual events with zero major system failures
+ - Worked with race result software and set up complicated timing equipment
+ - Practiced customer service with parents and coaches who had questions about race times
 
 
 Guidelines:
@@ -51,6 +63,9 @@ Guidelines:
 - Adjust technical skills section to emphasize job-relevant technologies
 - Modify bullet points to align with job responsibilities
 - Ensure all claims are truthful and based on actual experience (fold any uncertainty into the single batched question round above)
+
+Additional education (only use if relevant, e.g. an early-career or entry-level posting):
+Utah Valley University - Associate of Science; 2.51 GPA; 2020 - cut from the default resume since it's superseded by the WGU bachelor's and the incoming Georgia Tech master's
 
 Structure to maintain:
 1. Contact information and professional statement
